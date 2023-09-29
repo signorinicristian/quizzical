@@ -93,11 +93,11 @@ function App() {
   }
 
   return (
-    <div className="h-screen bg-[#F5F7FB] font-karla flex items-center justify-center">
+    <div className={`${!gameStarted ? "h-screen" : "h-auto py-8"} bg-[#F5F7FB] font-karla flex items-center justify-center`}>
       {!gameStarted ? (
         <div className="flex flex-col justify-center items-center">
-          <h1 className="font-bold text-transparent text-7xl bg-clip-text bg-gradient-to-r from-[#68D391] to-[#F87171] mb-7">Quizzical</h1>
-          <h3 className="text-[22px] font-[500] mb-[24px] text-center">
+          <h1 className="font-bold text-transparent text-5xl md:text-7xl bg-clip-text bg-gradient-to-r from-[#68D391] to-[#F87171] mb-7">Quizzical</h1>
+          <h3 className="w-[380px] sm:w-[600px] text-md md:text-[22px] font-[500] mb-[24px] text-center">
             Test your skills and knowledge with our fun quiz. <hr className="opacity-0"/> Select the correct answers and show that you are a master of general knowledge!
           </h3>
           <button
@@ -108,7 +108,7 @@ function App() {
           </button>
         </div>
       ) : (
-        <div className="flex flex-col justify-start items-center">
+        <div className="flex flex-col justify-start w-[400px] sm:w-[768px] md:w-[1024px] lg:w-[1200px] items-center">
           {shuffledQuestions.map((question, index) => (
             <Question
               key={index}
@@ -123,7 +123,7 @@ function App() {
             />
           ))}
 
-          <div className="flex flex-row justify-center items-center text-center">
+          <div className="flex flex-row w-[400px] justify-center items-center text-center">
             {gameEnded ? <h2 className="text-2xl mr-4 mt-[32px]">You scored {correctAnswers}/5 correct answers</h2> : ""}
             <button
               className="mt-[32px] px-4 py-2 bg-[#4D5B9E] border-none text-white text-xl rounded-lg hover:shadow-xl duration-200"
